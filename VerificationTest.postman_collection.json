@@ -1,0 +1,56 @@
+{
+	"info": {
+		"_postman_id": "876ae249-49f2-4a3c-8c6f-f4ad5cbb97cb",
+		"name": "VerificationTest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "LoginPageVerify",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Verify that status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Verify that response contains token\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.response.token).to.eql(\"3337912533qshF98bwq8k\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"login\":\"+79727772334\",\n\"password\": \"123456\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://test-api.peshkariki.ru/commonApi/login",
+					"protocol": "https",
+					"host": [
+						"test-api",
+						"peshkariki",
+						"ru"
+					],
+					"path": [
+						"commonApi",
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
